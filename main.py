@@ -27,9 +27,34 @@ if __name__ == '__main__':
     count= 0
     for count in range(1,20):
         if count < 10:
-            print(driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lnkTakim").text)
+            print(driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lnkTakim").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblOyun").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label4").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblKazanma").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblPuan").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label1").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label2").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label5").text +
+                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label3").text)
         else:
-            print(driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(count) + "_lnkTakim").text)
+            print(driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_lnkTakim").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_lblOyun").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_Label4").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_lblKazanma").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_lblPuan").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_Label1").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_Label2").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_Label5").text +
+                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
+                count) + "_Label3").text)
 
     driver.quit()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
