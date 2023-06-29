@@ -8,53 +8,43 @@ from selenium.webdriver.common.by import By
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def scrapeData(url,driver, arr):
 
+    driver.get(url)
+    no_teams = 20
+    count= 0
+    for count in range(1,no_teams):
+        if count < 10:
+            team = {"name" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lnkTakim").text,
+                    "played": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblOyun").text,
+                    "won": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label4").text,
+                    "tie": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblKazanma").text,
+                    "loss": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblPuan").text,
+                    "scored_goals": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label1").text,
+                    "yedigi" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label2").text,
+                    "points" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label3").text
+                    }
+        else:
+            team = {"name" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_lnkTakim").text,
+                    "played": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_lblOyun").text,
+                    "won": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_Label4").text,
+                    "tie": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_lblKazanma").text,
+                    "loss": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_lblPuan").text,
+                    "scored_goals": driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_Label1").text,
+                    "yedigi" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_Label2").text,
+                    "points" : driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl"+ str(count) + "_Label3").text
+                    }
+        arr.append(team)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+
     url = "https://www.tff.org/default.aspx?pageID=198"
 
-    response = requests.get(url)
     driver = webdriver.Chrome()
-    driver.get(url)
-    soup = BeautifulSoup(response.content,"html.parser")
-    score_table = soup.find(class_="s-table")
-    team_score = score_table.find_all("tr")
-    count= 0
-    for count in range(1,20):
-        if count < 10:
-            print(driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lnkTakim").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblOyun").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label4").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblKazanma").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_lblPuan").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label1").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label2").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label5").text +
-                  " " + driver.find_element(By.ID,"ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl0"+ str(count) + "_Label3").text)
-        else:
-            print(driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_lnkTakim").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_lblOyun").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_Label4").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_lblKazanma").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_lblPuan").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_Label1").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_Label2").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_Label5").text +
-                  " " + driver.find_element(By.ID, "ctl00_MPane_m_198_10561_ctnr_m_198_10561_grvACetvel_ctl" + str(
-                count) + "_Label3").text)
+    arr = []
+    scrapeData(url,driver,arr)
 
+    print(arr[0])
     driver.quit()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
